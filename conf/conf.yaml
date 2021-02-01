@@ -1,0 +1,18 @@
+features:
+  time:
+    font:
+      family: Londrina
+      size: 250
+    offset: 40
+
+  date:
+    font:
+      family: Londrina
+      size: 80
+    offset: 310
+
+images:
+  background: white.png
+  text: black.png  # image for text-mask
+
+image-saturation: 0.5  # don't really know what this means tbh

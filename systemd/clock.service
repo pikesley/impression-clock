@@ -1,0 +1,16 @@
+[Unit]
+Description=Clock
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/inky-clock
+ExecStart=/bin/bash -lc 'python clock.py'
+Restart=always
+KillMode=mixed
+TimeoutStopSec=5
+StandardInput=null
+StandardOutput=append:/var/log/clock.log
+StandardError=append:/var/log/clock.err
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,37 @@
+setup: apt-installs set-python install-poetry install system-config
+
+install:
+	poetry config virtualenvs.create false
+	poetry install --no-dev --extras inky
+
+set-python:
+	sudo update-alternatives --install /usr/local/bin/python python /usr/bin/python2 1
+	sudo update-alternatives --install /usr/local/bin/python python /usr/bin/python3 2
+
+install-poetry:
+	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+	sudo ln -sf /home/pi/.poetry/bin/poetry /usr/local/bin/
+
+install-pimorini-libs:
+	curl https://get.pimoroni.com/inky | bash
+
+apt-installs:
+	sudo apt-get update
+	sudo apt-get install -y python3-pip
+
+system-config: install-systemd
+
+install-systemd:
+	sudo systemctl enable /home/pi/impression-clock/systemd/clock.service
+
+###
+
+remote-atom:
+	curl -o /usr/local/bin/ratom https://raw.githubusercontent.com/aurora/rmate/master/rmate
+	chmod +x /usr/local/bin/ratom
+
+run-clock:
+	poetry run python clock.py
+
+stop-services:
+	sudo service clock stop
