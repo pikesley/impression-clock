@@ -5,13 +5,13 @@ from lib.conf import conf
 from lib.impression import impression
 from lib.timekeeper import Timekeeper
 
-tk = Timekeeper()
-cf = Clockface(tk)
+keeper = Timekeeper()
+cf = Clockface(keeper)
 
 while True:
-    if tk.has_changed:
+    if keeper.has_changed:
         impression.set_image(cf.image, saturation=conf["image-saturation"])
         impression.show()
 
-    tk.update()
+    keeper.update()
     sleep(1)

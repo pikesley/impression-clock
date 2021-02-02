@@ -9,9 +9,9 @@ width, height = impression.resolution
 class Clockface:
     """Class to generate an image."""
 
-    def __init__(self, tk, outfile="images/clock.png"):
+    def __init__(self, keeper, outfile="images/clock.png"):
         """Construct."""
-        self.tk = tk
+        self.keeper = keeper
         self.width, self.height = impression.resolution
         self.outfile = outfile
 
@@ -58,5 +58,5 @@ class Clockface:
         return (self.width - text_width) / 2
 
     def get_feature(self, feature_name):
-        """Retrieve a thing from our TK."""
-        return getattr(self.tk, f"{feature_name}_string")
+        """Retrieve a thing from our keeper."""
+        return getattr(self.keeper, f"{feature_name}_string")
