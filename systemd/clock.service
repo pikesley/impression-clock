@@ -3,7 +3,7 @@ Description=Clock
 
 [Service]
 User=pi
-WorkingDirectory=/home/pi/inky-clock
+WorkingDirectory=/home/pi/impression-clock
 ExecStart=/bin/bash -lc 'python clock.py'
 Restart=always
 KillMode=mixed

@@ -1,0 +1,12 @@
+Pillow
+PyYAML
+inky
+freezegun
+isort
+black
+pytest
+pylint
+pytest-random-order
+pytest-cov
+ipdb
+pylama

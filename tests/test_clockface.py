@@ -20,15 +20,15 @@ class TestClockface(TestCase):
     def test_image_generation(self, frozen_time):
         """Test it creates the image we expect."""
         Path("tmp/").mkdir(exist_ok=True)
-        tk = Timekeeper()
-        cf = Clockface(tk, outfile="tmp/clock.png")
-        cf.generate()
+        keeper = Timekeeper()
+        face = Clockface(keeper, outfile="tmp/clock.png")
+        face.generate()
 
         checksum = sha256(Path("tmp/clock.png").read_bytes()).hexdigest()
         assert checksum == checksums["12:34"]
 
         frozen_time.tick(60)
-        tk.update()
-        cf.generate()
+        keeper.update()
+        face.generate()
         checksum = sha256(Path("tmp/clock.png").read_bytes()).hexdigest()
         assert checksum == checksums["12:35"]

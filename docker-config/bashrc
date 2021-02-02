@@ -1,3 +1,1 @@
-complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' make/Makefile.docker | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
-
-alias make="/usr/bin/make --makefile make/Makefile.docker"
+complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' Makefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make

@@ -1,0 +1,3 @@
+Pillow
+PyYAML
+inky[rpi,fonts]

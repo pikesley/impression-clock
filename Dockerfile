@@ -1,18 +1,15 @@
 FROM python:3.7
 
 RUN apt-get update && apt-get install -y make rsync
+RUN python -m pip install --upgrade pip
 
 ENV PROJECT impression-clock
-
+ENV PLATFORM docker
 
 WORKDIR /opt/${PROJECT}
 
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-RUN ln -s /root/.poetry/bin/poetry /usr/local/bin/
-
 COPY ./ /opt/${PROJECT}
 
-RUN poetry config virtualenvs.create false
-RUN make --makefile make/Makefile.docker install
+RUN make dev-install
 
 COPY docker-config/bashrc /root/.bashrc
